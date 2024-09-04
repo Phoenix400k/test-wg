@@ -4,14 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تسجيل الدخول</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: #000; /* خلفية سوداء */
+            color: #FFFF00; /* لون النص أصفر */
+            font-family: 'Arial', sans-serif; /* يمكنك تغيير الخط إلى الخط الذي تفضله */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.1); /* خلفية خفيفة شفافة للنموذج */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #FFFF00;
+            border-radius: 4px;
+            background-color: #222; /* خلفية الحقل */
+            color: #FFFF00; /* لون النص في الحقل */
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #FFFF00;
+            color: #000;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ffd700; /* لون أغمق عند المرور */
+        }
+    </style>
 </head>
 <body>
-    <h1>الرجاء إدخال الكود</h1>
-    <form id="codeForm">
-        <input type="text" id="code" name="code" required placeholder="أدخل الكود">
-        <input type="hidden" id="user_id" name="user_id" value="USER_ID"> <!-- استبدل USER_ID بـ ID الخاص بالـ user -->
-        <button type="submit">إرسال</button>
-    </form>
+    <div>
+        <h1>الرجاء إدخال الكود</h1>
+        <form id="codeForm">
+            <input type="text" id="code" name="code" required placeholder="أدخل الكود">
+            <input type="hidden" id="user_id" name="user_id" value="USER_ID"> <!-- استبدل USER_ID بـ ID الخاص بالـ user -->
+            <button type="submit">إرسال</button>
+        </form>
+    </div>
     <script>
         document.getElementById('codeForm').addEventListener('submit', async function (e) {
             e.preventDefault();
