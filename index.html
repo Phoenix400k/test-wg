@@ -3,19 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phoenix</title>
+    <title>تسجيل الدخول</title>
 </head>
 <body>
-    <h1>Enter Code</h1>
+    <h1>الرجاء إدخال الكود</h1>
     <form id="codeForm">
-        <input type="text" id="code" name="code" required>
-        <button type="submit">Enter</button>
+        <input type="text" id="code" name="code" required placeholder="أدخل الكود">
+        <input type="hidden" id="user_id" name="user_id" value="USER_ID"> <!-- استبدل USER_ID بـ ID الخاص بالـ user -->
+        <button type="submit">إرسال</button>
     </form>
     <script>
-        document.getElementById('codeForm').addEventListener('submit', function (e) {
+        document.getElementById('codeForm').addEventListener('submit', async function (e) {
             e.preventDefault();
             const code = document.getElementById('code').value;
+            const user_id = document.getElementById('user_id').value;
+            
+            const response = await fetch('http://localhost:5000/verify_code', { // تأكد من استخدام العنوان الصحيح للخادم
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ code, user_id }),
+            });
 
+            const result = await response.json();
+            if (result.status === 'success') {
+                alert('الكود صحيح!');
+            } else {
+                alert('الكود غير صحيح!');
+            }
         });
     </script>
 </body>
